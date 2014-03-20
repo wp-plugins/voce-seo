@@ -1,7 +1,7 @@
 <?php
 /*
   Plugin Name: Voce SEO
-  Version: 0.2.3
+  Version: 0.2.5
   Plugin URI: http://voceconnect.com/
   Description: An SEO plugin taking things from both WP SEO and All in One SEO but leaving out the VIP incompatible pieces.
   Author: Voce Platforms
@@ -143,29 +143,49 @@ class VSEO {
 		}
 
 		if ( isset( $queried_object->post_type ) ) {
-			if ( $og_description = self::get_seo_meta( 'og_description', get_queried_object_id() ) ) {
-				printf( '<meta property="og:description" content="%s" />' . chr( 10 ), $og_description );
-				printf('<meta name="twitter:description" content="%s" />'.chr(10), esc_attr($og_description));
+			$og_description = self::get_seo_meta( 'og_description', get_queried_object_id() );
+			$twitter_description = self::get_seo_meta( 'twitter_description', get_queried_object_id() );
+			if ( ! $og_description && $description ) {
+				$og_description = $description;
 			}
+			if ( ! $twitter_description && $description ) {
+				$twitter_description = $description;
+			}
+			printf( '<meta property="og:description" content="%s" />' . chr( 10 ), esc_attr( $og_description ) );
+			printf( '<meta name="twitter:description" content="%s" />'.chr(10), esc_attr( $twitter_description ) );
 
 		}
 
-		remove_filter( 'wp_title', array( __CLASS__, 'seo_title' ), 10, 3);
-		printf('<meta property="og:title" content="%s" />'.chr(10), esc_attr(trim(wp_title('', false))));
-		printf('<meta name="twitter:title" content="%s" />'.chr(10), esc_attr(trim(wp_title('', false))));
-		add_filter( 'wp_title', array( __CLASS__, 'seo_title' ), 10, 3);
+		printf('<meta property="og:title" content="%s" />'.chr(10), esc_attr(self::get_ogtitle()));
+		printf('<meta name="twitter:title" content="%s" />'.chr(10), esc_attr(self::get_ogtitle()));
 
 		printf('<meta property="og:type" content="%s"/>'.chr(10), apply_filters('vseo_ogtype', 'article'));
-		printf('<meta name="twitter:card" content="%s" />'.chr(10), apply_filters('vseo_ogtype', 'summary'));
+		printf('<meta name="twitter:card" content="%s" />'.chr(10), apply_filters('vseo_twittercard', 'summary'));
 
 
 		if($image = self::get_meta_image()) {
 			printf('<meta name="twitter:image" content="%s" />'.chr(10), esc_attr($image));
 			printf('<meta property="og:image" content="%s" />'.chr(10), esc_attr($image));
 		}
-		echo '<!-- end voce_seo -->';
+		echo '<!-- end voce_seo -->\n';
 
 		do_action( 'voce_seo_after_wp_head' );
+	}
+
+	public static function get_ogtitle() {
+		if ( is_home() || is_front_page() ) {
+			$title = get_bloginfo( 'name' );
+		} else if ( is_author() ) {
+			$author = get_queried_object();
+			$title = $author->display_name;
+		} else if ( is_singular() ) {
+			global $post;
+			$title = empty( $post->post_title ) ? ' ' : wp_kses( $post->post_title, array() ) ;
+		} else {
+			$title = '';
+		}
+
+		return apply_filters( 'vseo_ogtitle', $title );
 	}
 
 	public static function get_seo_meta($key, $post_id = 0) {
