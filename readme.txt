@@ -2,8 +2,8 @@
 Contributors: voceplatforms, prettyboymp
 Tags: SEO
 Requires at least: 3.7.0
-Tested up to: 3.8.1
-Stable tag: 0.2.8
+Tested up to: 3.9
+Stable tag: 0.3.0
 License: GPLv2 or later
 
 An SEO plugin taking things from both WP SEO and All in One SEO but leaving out the VIP incompatible pieces.
@@ -14,6 +14,12 @@ Adds filterable SEO and Social fields to all publicly queryable post types and a
 to improve discoverability.
 
 == Changelog ==
+
+= Version 0.3.0 =
+* Adding ability to set separate Facebook, Twitter and SEO title
+
+= Version 0.2.9 =
+* Adding ability to set title and description meta for taxonomy terms, set in the taxonomy term admin page
 
 = Version 0.2.8 =
 * Fixing issue where tag attributes would not be separated.
