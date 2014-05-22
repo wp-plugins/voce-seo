@@ -3,7 +3,7 @@ Contributors: voceplatforms, prettyboymp
 Tags: SEO
 Requires at least: 3.7.0
 Tested up to: 3.9.1
-Stable tag: 0.3.4
+Stable tag: 0.3.5
 License: GPLv2 or later
 
 An SEO plugin taking things from both WP SEO and All in One SEO but leaving out the VIP incompatible pieces.
@@ -14,6 +14,9 @@ Adds filterable SEO and Social fields to all publicly queryable post types and a
 to improve discoverability.
 
 == Changelog ==
+
+= Version 0.3.5 =
+* Fix file permissions
 
 = Version 0.3.4 =
 * Remove 301 Redirect meta element, which was deprecated
