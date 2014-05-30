@@ -3,20 +3,40 @@ Contributors: voceplatforms, prettyboymp
 Tags: SEO
 Requires at least: 3.7.0
 Tested up to: 3.9.1
-Stable tag: 0.3.5
+Stable tag: 0.3.6
 License: GPLv2 or later
 
 An SEO plugin taking things from both WP SEO and All in One SEO but leaving out the VIP incompatible pieces.
 
 == Description ==
 
-Adds filterable SEO and Social fields to all publicly queryable post types and applies them to the header of the site
-to improve discoverability.
+Adds filterable SEO and Social fields to all publicly queryable post types and applies them to the header of the site to improve discoverability.
+
+== Installation ==
+
+1. Install the Voce Seo plugin folder directly into the `wp-content/plugins/` directory.
+1. Activate the plugin via the `Plugins` menu in the WordPress admin.
+
+== Installation ==
+
+=== As standard plugin: ===
+> See [Installing Plugins](http://codex.wordpress.org/Managing_Plugins#Installing_Plugins).
+
+=== As theme or plugin dependency: ===
+> After dropping the plugin into the containing theme or plugin, add the following:
+```php
+if( ! class_exists( 'VSEO' ) ) {
+    require_once( $path_to_voce_seo . '/voce-seo.php' );
+}
+```
 
 == Changelog ==
 
-= Version 0.3.5 =
-* Fix file permissions
+= Version 0.3.6
+* Add `vseo_twitterimage` filter to filter the twitter:image property.
+
+= Version 0.3.5
+* No change. Syncing with wordpress.org version bump needed for SVN permissions fix.
 
 = Version 0.3.4 =
 * Remove 301 Redirect meta element, which was deprecated
@@ -67,8 +87,3 @@ to improve discoverability.
 
 = Version 0.1.0 =
 * Initial release
-
-== Installation ==
-
-1. Install the Voce Seo plugin folder directly into the `wp-content/plugins/` directory.
-1. Activate the plugin via the `Plugins` menu in the WordPress admin.
