@@ -1,7 +1,7 @@
 <?php
 /*
   Plugin Name: Voce SEO
-  Version: 0.3.5
+  Version: 0.3.6
   Plugin URI: http://voceconnect.com/
   Description: An SEO plugin taking things from both WP SEO and All in One SEO but leaving out the VIP incompatible pieces.
   Author: Voce Platforms
@@ -188,10 +188,10 @@ class VSEO {
 
 		$meta_objects = self::create_meta_object( 'twitter:title', 'meta', array( 'name' => 'twitter:title', 'content' => esc_attr( self::get_social_title( 'twitter_title' ) ) ), $meta_objects );
 
-		$meta_objects = self::create_meta_object( 'twitter:card', 'meta', array( 'name' => 'twitter:card', 'content' => apply_filters( 'vseo_twittercard', 'summary' ) ), $meta_objects );
+		$meta_objects = self::create_meta_object( 'twitter:card', 'meta', array( 'name' => 'twitter:card', 'content' => esc_attr( apply_filters( 'vseo_twittercard', 'summary' ) ) ), $meta_objects );
 
 		if( $image = self::get_meta_image() ) {
-			$meta_objects = self::create_meta_object( 'twitter:image', 'meta', array( 'name' => 'twitter:image', 'content' => esc_attr( $image ) ), $meta_objects );
+			$meta_objects = self::create_meta_object( 'twitter:image', 'meta', array( 'name' => 'twitter:image', 'content' => esc_attr( apply_filters( 'vseo_twitterimage', $image ) ) ), $meta_objects );
 		}
 
 		return $meta_objects;
