@@ -2,7 +2,7 @@
 /**
  * A simplification of the settings API
  * @author Michael Pretty (prettyboymp)
- * @version 0.4.5
+ * @version 0.5
  */
 
 if(!class_exists('Voce_Settings_API')) {
@@ -14,7 +14,7 @@ class Voce_Settings_API {
 
 	private $settings_pages;
 
-	CONST VERSION = '0.4.5';
+	CONST VERSION = '0.4.8';
 
 	/**
 	 * Returns singleton instance of api
@@ -232,12 +232,11 @@ class Voce_Settings_Group {
 	}
 
 	/**
-	 * Adds a group to the group
+	 * Adds a setting to the group
 	 *
 	 * @param string $title
-	 * @param string $group_key
-	 * @param string $capability
-	 * @param string $description
+	 * @param string $setting_key
+	 * @param array $args
 	 * @return Voce_Setting
 	 */
 	public function add_setting($title, $setting_key, $args = array()) {
