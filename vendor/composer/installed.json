@@ -1,20 +1,20 @@
 [
     {
         "name": "voceconnect/voce-settings-api",
-        "version": "0.5.0",
-        "version_normalized": "0.5.0.0",
+        "version": "0.5.2",
+        "version_normalized": "0.5.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/voceconnect/voce-settings-api.git",
-            "reference": "8dba84c4ea99878c2a726e7f30a2efbf277c9d19"
+            "reference": "3642b64dde17f4b337b801090323d65583275d87"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/voceconnect/voce-settings-api/zipball/8dba84c4ea99878c2a726e7f30a2efbf277c9d19",
-            "reference": "8dba84c4ea99878c2a726e7f30a2efbf277c9d19",
+            "url": "https://api.github.com/repos/voceconnect/voce-settings-api/zipball/3642b64dde17f4b337b801090323d65583275d87",
+            "reference": "3642b64dde17f4b337b801090323d65583275d87",
             "shasum": ""
         },
-        "time": "2014-11-10 18:26:55",
+        "time": "2015-06-03 13:13:58",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
