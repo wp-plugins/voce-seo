@@ -2,7 +2,7 @@
 /**
  * A simplification of the settings API
  * @author Michael Pretty (prettyboymp)
- * @version 0.5
+ * @version 0.5.2
  */
 
 if(!class_exists('Voce_Settings_API')) {
@@ -14,7 +14,7 @@ class Voce_Settings_API {
 
 	private $settings_pages;
 
-	CONST VERSION = '0.4.8';
+	CONST VERSION = '0.5.2';
 
 	/**
 	 * Returns singleton instance of api
@@ -150,9 +150,10 @@ class Voce_Settings_Page {
 				$page_hook = add_menu_page($this->title, $this->menu_title, $this->capability, $this->page_key, array($this, 'display'));
 			}
 
-			add_action( 'load-' . $page_hook, function(){
-				do_action( 'vs_admin_enqueue_scripts', $this );
+			$page = $this;
 
+			add_action( 'load-' . $page_hook, function() use ($page){
+				do_action( 'vs_admin_enqueue_scripts', $page );
 			} );
 		}
 	}
